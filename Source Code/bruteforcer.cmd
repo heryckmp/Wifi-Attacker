@@ -41,10 +41,10 @@ set wifi_target=not_defined
 
 set attack_counter_option=0
 
-if not exist "wordlist.txt" (
+if not exist "wifi_wordlist.txt" (
     set wordlist_file=not_defined
 ) else (
-    set wordlist_file=wordlist.txt
+    set wordlist_file=wifi_wordlist.txt
 )
 
 
@@ -389,6 +389,13 @@ goto :eof
         goto :mainmenu
     )
 
+    if "!program_prompt_input!" equ "filter" (
+        call :color_echo . cyan "Filtrando rockyou.txt para senhas WiFi..."
+        python wifi_rockyou_filter.py
+        timeout /t 5 >nul
+        goto :mainmenu
+    )
+
     if "!program_prompt_input!" equ "exit" (
         exit
     )
@@ -729,19 +736,20 @@ goto :eof
 	call :color_echo . cyan "Commands"
 	echo.
 	echo.
-	echo  - help             : Displays this page
-	echo  - wordlist         : Provide a wordlist file
-	echo  - scan             : Performs a WI-FI scan
-	echo  - interface        : Open Interface Management
-	echo  - attack           : Attacks selected WI-FI
-	echo  - counter          : Sets the attack counter
-	echo  - generate         : Generate complex wordlist
-	echo  - exit             : Close the program
+	echo  - help             : Mostra esta página
+	echo  - wordlist         : Fornece um arquivo de wordlist
+	echo  - scan             : Realiza um scan de WI-FI
+	echo  - interface        : Abre o Gerenciamento de Interface
+	echo  - attack           : Ataca o WI-FI selecionado
+	echo  - counter          : Define o contador de tentativas
+	echo  - generate         : Gera wordlist complexa
+	echo  - filter           : Filtra rockyou.txt para senhas WiFi
+	echo  - exit             : Fecha o programa
 	echo.
-	echo  For more information, please refer to "README.md".
+	echo  Para mais informações, consulte "README.md"
 	echo.
-	echo  More projects from TechnicalUserX:
-	echo  https://github.com/TechnicalUserX
+	echo  Desenvolvido por Heryck:
+	echo  https://github.com/heryckmp
 	echo.
 	echo.
 	echo Press any key to continue...
