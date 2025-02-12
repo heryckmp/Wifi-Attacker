@@ -87,7 +87,7 @@ Comandos
 
 ### Criador
 Projeto desenvolvido e mantido por:
-- **Heryck Morais Pina**
+- **Erick Moreira**
   - GitHub: [heryckmp](https://github.com/heryckmp)
   - Projeto: [Wifi-Attacker](https://github.com/heryckmp/Wifi-Attacker)
 
